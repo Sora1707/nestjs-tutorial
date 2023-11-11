@@ -3,17 +3,19 @@ import {
     NestModule,
     MiddlewareConsumer,
     RequestMethod,
+    UseFilters,
 } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
 import { UsersModule } from './users/users.module';
 import { logger } from './middlewares/logger.middleware';
 import { printer } from './middlewares/printer.middleware';
 import { AuthModule } from './auth/auth.module';
+import { TempModule } from './temp/temp.module';
+import { CaslModule } from './casl/casl.module';
 
 @Module({
-    imports: [AuthModule, UsersModule],
+    imports: [AuthModule, UsersModule, TempModule, CaslModule],
     controllers: [AppController],
     providers: [AppService],
 })
